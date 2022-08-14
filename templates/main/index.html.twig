@@ -1,8 +1,37 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <header>
-        <h1>Bienvenue sur le site de gestion de commandes FBR</h1>
-    </header>
+    <main class="container">
+       <section class="row">
+        <div class="col-12">
+            <h1>Bienvenue sur le site de gestion de commandes FBR</h1>
+            <h2>Hello {{ controller_name }}! ✅</h2>
+        </div>
+        <div class="col-12">
+            {# {{ dump() }} permet de voir toutes les variables disponibles sur la vue  #}
+            {# boucle : pour chaque commande dans le tableau des commandes, je demande sa reference #}
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Référence</th>
+                        <th scope="col">Chantier</th>
+                        <th scope="col">Date de création</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                        <tr class="tr-pointer">
+                            <td>{{ order.reference }}</td>
+                            <td>{{ order.chantier }}</td>
+                            <td>{{ order.createdAt|date('d-m-Y') }}</td>
+                            <td><a href="#" class="btn btn-sm btn-warning">Modifier</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+       </section> 
+    </main>
     <p>test</p>
 {% endblock %}

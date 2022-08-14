@@ -28,6 +28,9 @@ class Orders
     #[ORM\OneToMany(mappedBy: 'orders', targetEntity: OrderDetails::class, orphanRemoval: true)]
     private Collection $orderDetails;
 
+    #[ORM\Column(length: 255)]
+    private ?string $chantier = null;
+
     public function __construct()
     {
         $this->orderDetails = new ArrayCollection();
@@ -100,6 +103,18 @@ class Orders
                 $orderDetail->setOrders(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getChantier(): ?string
+    {
+        return $this->chantier;
+    }
+
+    public function setChantier(string $chantier): self
+    {
+        $this->chantier = $chantier;
 
         return $this;
     }

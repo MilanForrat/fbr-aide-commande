@@ -1,0 +1,17 @@
+.tr-pointer{
+    transition: 0.5s;
+}
+.tr-pointer:hover{
+    background-color: rgb(204, 226, 250);
+}
+.tr-pointer td{
+    text-align: center;
+}
+.thead-dark{
+    color: #fff;
+    background-color: #496e91;
+    border-color: #32383e;
+}
+.thead-dark th{
+    text-align: center;
+}
