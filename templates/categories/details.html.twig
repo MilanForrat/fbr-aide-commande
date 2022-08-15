@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CategoriesController!{% endblock %}
+
+{% block body %}
+    <main class="container">
+        <section class="row">
+            <div class="col-12">
+                <h1>Liste des produits de la catégorie </h1>
+            </div>
+            {# {{dump()}} #}
+            <h2>Liste des produits associés à la catégorie : {{category.name}}</h2>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Article</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Poids</th>
+                        <th scope="col">Prix HT</th>
+                        <th scope="col">Prix TTC</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in products %}
+                        <tr class="tr-pointer">
+                            <td>{{product.name}}</td>
+                            <td>{{product.description}}</td>
+                            <td>{{product.poids}} gr.</td>
+                            <td>{{product.prixHT}} €</td>
+                            <td>{{product.prixTTC}} €</td>
+                            <td><a href="#" class="btn btn-sm btn-warning">Modifier</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </main>
+{% endblock %}

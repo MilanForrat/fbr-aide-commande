@@ -34,6 +34,15 @@ class Products
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?float $prixHT = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?float $prixTTC = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?float $poids = null;
+
     public function __construct()
     {
         $this->orderDetails = new ArrayCollection();
@@ -130,6 +139,42 @@ class Products
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getPrixHT(): ?float
+    {
+        return $this->prixHT;
+    }
+
+    public function setPrixHT(?float $prixHT): self
+    {
+        $this->prixHT = $prixHT;
+
+        return $this;
+    }
+
+    public function getPrixTTC(): ?float
+    {
+        return $this->prixTTC;
+    }
+
+    public function setPrixTTC(?float $prixTTC): self
+    {
+        $this->prixTTC = $prixTTC;
+
+        return $this;
+    }
+
+    public function getPoids(): ?float
+    {
+        return $this->poids;
+    }
+
+    public function setPoids(?float $poids): self
+    {
+        $this->poids = $poids;
 
         return $this;
     }
