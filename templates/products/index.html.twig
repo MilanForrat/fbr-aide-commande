@@ -28,8 +28,12 @@
                         <td>{{product.poids}} gr.</td>
                         <td>{{product.prixHT}} €</td>
                         <td>{{product.prixTTC}} €</td>
-                        <td><a href="{{path('products_index')}}{{product.slug}}" 
-                            class="btn btn-sm btn-warning">Modifier</a></td>
+                        <td>
+                            <a href="{{path('products_index')}}{{product.slug}}" 
+                            class="btn btn-sm btn-warning">Modifier</a>
+                            <a href="{{path('products_index')}}supprimer/{{product.id}}" onclick="return confirm('Confirmer la suppression')" 
+                            class="btn btn-sm btn-danger">Supprimer</a>
+                        </td>
                     </tr>
                     {# {{path('products_details')}}{{product.name}} #}
                 {% endfor %}

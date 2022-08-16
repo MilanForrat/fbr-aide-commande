@@ -10,6 +10,7 @@ use App\Repository\ProductsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 
 
 #[Route('/produits', name: 'products_')]
@@ -47,6 +48,19 @@ class ProductsController extends AbstractController
 
         return $this->renderForm('products/new.html.twig', [
             'form' => $form,
+        ]);
+    }
+
+    #[Route('/supprimer/{id}', name: 'delete')]
+    // #[Entity('post', options: ['slug' => 'products_slug'])]
+    public function productsDelete(Products $product, ManagerRegistry $mr, ProductsRepository $productsRepository)
+    {
+        $entityManager = $mr->getManager();
+        $entityManager->remove($product);
+        $entityManager->flush();
+
+        return $this->render('products/index.html.twig', [
+            'products' => $productsRepository->findBy([], ['name' => 'asc'])
         ]);
     }
 

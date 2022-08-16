@@ -60,6 +60,11 @@ class Categories
         return $this;
     }
 
+    public function __toString()
+    {
+        return $this->getName();
+    }
+
     public function getCategoryOrder(): ?int
     {
         return $this->categoryOrder;

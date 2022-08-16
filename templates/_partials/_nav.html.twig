@@ -16,7 +16,17 @@
           <a class="nav-link" href="{{path('categories_index')}}">Catégories</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{path('products_index')}}">Produits</a>
+          <a class="nav-link" href=""></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="{{path('products_index')}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Produits
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{path('products_index')}}">Liste des produits</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{path('products_new-product')}}">Ajouter un produit</a></li>
+          </ul>
         </li>
       </ul>
     </div>
