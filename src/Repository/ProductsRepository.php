@@ -38,6 +38,26 @@ class ProductsRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+    /**
+    * @return Products[] Returns an array of Story objects
+    */
+
+    public function findAllByCategory($categoryId)
+    {
+        $queryBuilder = $this->createQueryBuilder('products');
+
+        $queryBuilder->leftJoin('products.category', 'productsCategory');
+
+        $queryBuilder->andWhere(
+            $queryBuilder->expr()->eq('productsCategory.id', $categoryId)
+        );
+
+        $queryBuilder->addOrderBy('products.category');
+
+        $query = $queryBuilder->getQuery();
+
+        return $query->getResult();
+    }
 
 //    /**
 //     * @return Products[] Returns an array of Products objects

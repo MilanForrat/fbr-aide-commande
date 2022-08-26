@@ -17,6 +17,7 @@
                     <th scope="col">Poids</th>
                     <th scope="col">Prix HT</th>
                     <th scope="col">Prix TTC</th>
+                    <th scope="col">Catégorie</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
@@ -28,6 +29,7 @@
                         <td>{{product.poids}} gr.</td>
                         <td>{{product.prixHT}} €</td>
                         <td>{{product.prixTTC}} €</td>
+                        <td>{{product.categories}}</td>
                         <td>
                             <a href="{{path('products_index')}}{{product.slug}}" 
                             class="btn btn-sm btn-warning">Modifier</a>

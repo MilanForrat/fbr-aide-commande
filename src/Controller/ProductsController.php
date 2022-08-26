@@ -43,7 +43,7 @@ class ProductsController extends AbstractController
             $entityManager->persist($product);
             $entityManager->flush();
 
-            return $this->redirectToRoute('products_new-product');
+            return $this->redirectToRoute('products_index');
         }
 
         return $this->renderForm('products/new.html.twig', [
@@ -63,6 +63,18 @@ class ProductsController extends AbstractController
             'products' => $productsRepository->findBy([], ['name' => 'asc'])
         ]);
     }
+
+    // /**
+    //  * @Route("/public/stories", name="stories_list", methods={"GET"})
+    //  */
+    // #[Route('/{id}', name: 'delete')]
+    // public function listByCategory(ProductsRepository $repository, Request $request)
+    // {
+    //     if ($request->query->has('products_category')) {
+    //         $productsCategory = $request->query->get('story_category');
+    //         $products = $repository->findAllByCategory($productsCategory);
+    //     } 
+    // }
 
     #[Route('/{slug}', name: 'details')]
     public function productsDetails(Products $product): Response
